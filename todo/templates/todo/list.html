@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head><title>My Todos</title></head>
+<body>
+    <h1>My Todos</h1>
+    <a href="{% url 'add_todo' %}">+ Add new todo</a>
+    <ul>
+    {% for todo in todos %}
+        <li{% if todo.completed %} style="text-decoration: line-through;"{% endif %}>
+            {{ todo.title }} ({{ todo.created_at|date:"M d, H:i" }})
+        </li>
+    {% empty %}
+        <li>No todos yet – add one!</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
